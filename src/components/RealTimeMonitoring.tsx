@@ -1,4 +1,4 @@
-import { useRive } from 'rive-react'
+import { useRive, Layout, Fit, Alignment } from 'rive-react'
 // import { useStateMachineInput } from 'rive-react' // Uncomment when you need to control state machine inputs
 
 const RealTimeMonitoring = () => {
@@ -6,9 +6,13 @@ const RealTimeMonitoring = () => {
   // Replace 'your-animation.riv' with your actual Rive animation file path
   // Place your .riv files in the public folder or src/assets folder
   const { RiveComponent } = useRive({
-    src: '/animations/realtime-monitoring.riv', // Update this path to your animation file
+    src: '/animations/look.riv', // Update this path to your animation file
     autoplay: true,
     stateMachines: 'State Machine 1', // Update with your state machine name
+    layout: new Layout({
+      fit: Fit.Contain,
+      alignment: Alignment.Center,
+    }),
   })
 
   // Example: Control state machine inputs (uncomment and customize as needed)
@@ -26,10 +30,10 @@ const RealTimeMonitoring = () => {
       </p>
       
       {/* Rive Animation Container */}
-      <div className="bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-500/20 rounded-lg p-6 border border-cyan-500/30 overflow-hidden backdrop-blur-sm">
-        <div className="h-64 w-full flex items-center justify-center">
+      <div className="bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-cyan-500/20 rounded-lg p-4 border border-cyan-500/30 overflow-hidden backdrop-blur-sm">
+        <div className="w-full h-[50vh] min-h-[400px] max-h-[700px] flex items-center justify-center relative">
           {RiveComponent && (
-            <div className="w-full h-full">
+            <div className="w-full h-full relative rive-container">
               <RiveComponent />
             </div>
           )}
